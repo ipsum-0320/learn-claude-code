@@ -812,7 +812,7 @@ class MessageBus:
 # 梳理顺序：    
 # 1. TeammateManager — 队友怎么被创建、怎么工作、怎么 idle、怎么关闭
 # 2. TaskManager — 队友怎么认领任务、依赖关系怎么解除（结合队友场景就清晰了）
-# 3. MessageBus — 主 Agent 和队友怎么通信（你已经看过了，结合队友场景再回顾一遍）
+# 3. MessageBus — 主 Agent 和队友怎么通信（我们已经看过了，结合队友场景再回顾一遍）
 # 4. agent_loop — 把所有机制串起来看主 Agent 怎么驱动整个系统
 
 # ⭐️⭐️⭐️⭐️⭐️ 这里介绍一下 TeammateManager、run_subagent 和 BackgroundManager 的区别：
@@ -994,7 +994,7 @@ class TeammateManager:
         # {
         #     "type": "message",
         #     "from": "alice",
-        #     "content": "我已经完成了前端部分，接口文档在 docs/api.md，你可以开始写后端了",
+        #     "content": "我已经完成了前端部分，接口文档在 docs/api.md，我们可以开始写后端了",
         #     "timestamp": 1703123500.789
         # }
 
@@ -1564,7 +1564,7 @@ TOOLS = [
 #     },
 # ]
 
-# === SECTION: agent_loop ===
+
 # Agent 的核心循环：发消息给 LLM → 解析工具调用 → 执行工具 → 循环直到 LLM 返回普通回复
 def agent_loop(messages: list):
     rounds_without_todo = 0
@@ -1576,7 +1576,7 @@ def agent_loop(messages: list):
             # TOKEN_THRESHOLD 是触发对话压缩的 Token 上限
             print("[auto-compact triggered]")
             messages[:] = auto_compact(messages)
-            # 当对话太长时，把完整历史存到磁盘，然后让 LLM 生成摘要，用这个摘要替换掉整个 messages 列表。
+            # 当对话太长时，把完整co历史存到磁盘，然后让 LLM 生成摘要，用这个摘要替换掉整个 messages 列表。
             
         # 把后台线程已完成的任务结果，包装成对话消息注入到 messages 中，让 LLM 知道后台发生了什么。
         notifs = BG.drain()
