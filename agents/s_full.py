@@ -630,19 +630,19 @@ class TaskManager:
 # 刚创建时 =>
 # {
 #   "id": 3,
-#   "subject": "实现用户登录功能",
-#   "description": "需要包含 JWT token 生成、session 管理、错误处理",
+#   "subject": "剪辑主采访片段",
+#   "description": "需要完成粗剪、去掉口误和长停顿、添加 B-roll 覆盖素材",
 #   "status": "pending",
 #   "owner": null,
 #   "blockedBy": [1, 2],
 #   "blocks": [4, 5]
-# } 
+# }
 
 # 被 bob 认领后 =>
 # {
 #   "id": 3,
-#   "subject": "实现用户登录功能",
-#   "description": "需要包含 JWT token 生成、session 管理、错误处理",
+#   "subject": "剪辑主采访片段",
+#   "description": "需要完成粗剪、去掉口误和长停顿、添加 B-roll 覆盖素材",
 #   "status": "in_progress",
 #   "owner": "bob",
 #   "blockedBy": [1, 2],
@@ -652,8 +652,8 @@ class TaskManager:
 # 任务1和任务2完成后，blockedBy 自动清空 =>
 # {
 #   "id": 3,
-#   "subject": "实现用户登录功能",
-#   "description": "需要包含 JWT token 生成、session 管理、错误处理",
+#   "subject": "剪辑主采访片段",
+#   "description": "需要完成粗剪、去掉口误和长停顿、添加 B-roll 覆盖素材",
 #   "status": "in_progress",
 #   "owner": "bob",
 #   "blockedBy": [],
@@ -663,8 +663,8 @@ class TaskManager:
 # bob 完成后 =>
 # {
 #   "id": 3,
-#   "subject": "实现用户登录功能",
-#   "description": "需要包含 JWT token 生成、session 管理、错误处理",
+#   "subject": "剪辑主采访片段",
+#   "description": "需要完成粗剪、去掉口误和长停顿、添加 B-roll 覆盖素材",
 #   "status": "completed",
 #   "owner": "bob",
 #   "blockedBy": [],
@@ -673,12 +673,11 @@ class TaskManager:
 
 # 此时任务4和任务5的 `blockedBy` 里的 `3` 会被自动移除，它们就可以被认领了。
 # 对应 list_all() 的输出：
-# [ ] #1: 搭建数据库 schema @alice
-# [ ] #2: 设计 API 接口文档 @carol
-# [>] #3: 实现用户登录功能 @bob (blocked by: [1, 2])
-# [ ] #4: 写登录页面前端 (blocked by: [3])
-# [ ] #5: 写登录接口测试 (blocked by: [3])
-
+# [ ] #1: 整理原始素材并分类 @alice
+# [ ] #2: 导出音频并完成降噪处理 @carol
+# [>] #3: 剪辑主采访片段 @bob (blocked by: [1, 2])
+# [ ] #4: 添加字幕和文字动画 (blocked by: [3])
+# [ ] #5: 调色和最终导出 (blocked by: [3])
 
 # === SECTION: background (s08) ===
 class BackgroundManager:
